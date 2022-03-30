@@ -6,6 +6,7 @@ dirfilter:
 - public
 - scripts
 - vendor
+- templates
 - logs
 - doc
 - data
@@ -13,12 +14,14 @@ dirfilter:
 - conf
 - assets
 - .packager
+- .github
 - sh
 ext:
 - go
 enablerun: true
 action:
   before:
+  - ulimit -n 5000
   - go generate internal/assets/conf/conf.go
   - go generate internal/assets/public/public.go
   - go generate internal/assets/templates/templates.go
